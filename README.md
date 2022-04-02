@@ -3,7 +3,6 @@
 ## Overview
 Chat is an app for mobile devices. Build using React Native and optimized for both iOS and Android devices. Expo was used to develop the app and Google Firestore is used to store the chat messages. The app will provide users with a chat interface and options to share images and their location.
 
-#
 ## User Stories
 <ul>
 <li>As a new user, I want to be able to easily enter a chat room so I can quickly start talking to my
@@ -28,13 +27,17 @@ and location data.</li>
 <li>Data gets stored online and offline.</li>
 </ul>
 
-
 ## Tech Stack
 <ul>
 <li>React Native</li>
 <li>Expo</li>
 <li>Google Firestore Database</li>
 <li>Gifted Chat</li>
-<ul>
+</ul>
 
+## How to Run
 
+``` 
+expo start 
+```
+Expo will start the app and a browser tab will open, there you find the options to execute the app on a device or an emulator.
