@@ -9,10 +9,18 @@ export default class Chat extends React.Component {
     super();
     // state set with static message
     this.state = {
+      messages: [],
+    };
+  }
+
+  componentDidMount() {
+    const name = this.props.route.params.name;
+
+    this.setState({
       messages: [
         {
           _id: 1,
-          text: 'Hello developer',
+          text: 'Hello' + ' ' + name,
           createdAt: new Date(),
           user: {
             _id: 2,
@@ -20,22 +28,11 @@ export default class Chat extends React.Component {
             avatar: 'https://placeimg.com/140/140/any',
           },
         },
-      ],
-    };
-  }
-
-  componentDidMount() {
-    this.setState({
-      messages: [
         {
-          _id: 1,
-          text: 'Hello developer',
+          _id: 2,
+          text: name + ' ' + 'has joined the chat',
           createdAt: new Date(),
-          user: {
-            _id: 2,
-            name: 'React Native',
-            avatar: 'https://placeimg.com/140/140/any',
-          },
+          system: true,
         },
       ],
     })
@@ -62,7 +59,7 @@ export default class Chat extends React.Component {
       // the selected background color is rendered in the chat screen
       <View 
         style={{flex: 1, backgroundColor: chatBg}} 
-        { Platform.OS === 'android' ? <KeyboardAvoidingView behavior='height' /> : null }>
+      >
         {/* renders chat interface */}
         <GiftedChat
           messages={this.state.messages}
@@ -71,6 +68,8 @@ export default class Chat extends React.Component {
             _id: 1,
           }}
           />
+          { Platform.OS === 'android' ? <KeyboardAvoidingView behavior='height' /> : null } 
+
         <TouchableOpacity
           style={styles.button}
           // navigates user back to Start screen
@@ -93,7 +92,6 @@ const styles = StyleSheet.create ({
     margin: 40,
     padding: 10,
     borderColor: 'white',
-    
   },
   buttonText: {
     color: 'white',
