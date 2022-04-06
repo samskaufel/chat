@@ -65,24 +65,43 @@ export default class Start extends React.Component {
               {/* TouchableOpacity makes views responsive to touches */}
               <TouchableOpacity
                 style={styles.black}
+                accessible={true}
+                accessibilityLabel="black"
+                accessibilityHint="Lets you choose a black chat background"
+                accessibilityRole="button"
                 onPress={() => this.chooseColor(this.colors.black)} // user selects color from array
               />
               <TouchableOpacity
                 style={styles.darkPurple}
+                accessible={true}
+                accessibilityLabel="dark purple"
+                accessibilityHint="Lets you choose a dark purple chat background"
+                accessibilityRole="button"
                 onPress={() => this.chooseColor(this.colors.darkPurple)}
               />
               <TouchableOpacity
                 style={styles.grayBlue}
+                accessible={true}
+                accessibilityLabel="gray-blue"
+                accessibilityHint="Lets you choose a gray-blue chat background"
+                accessibilityRole="button"
                 onPress={() => this.chooseColor(this.colors.grayBlue)}
               />
               <TouchableOpacity
                 style={styles.sage}
+                accessible={true}
+                accessibilityLabel="sage"
+                accessibilityHint="Lets you choose a sage chat background"
+                accessibilityRole="button"
                 onPress={() => this.chooseColor(this.colors.sage)}
               />
             </View>
             <TouchableOpacity
               style={styles.button}
-              
+              accessible={true}
+              accessibilityLabel="Start chatting"
+              accessibilityHint="Navigates to the chat screen"
+              accessibilityRole="button"
               /* when user presses button, the function navigates to the Chat 
               screen and passes the state name and background color from the 
               Start Screen to the Chat screen */

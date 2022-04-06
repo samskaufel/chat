@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, Platform, KeyboardAvoidingView } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+// import { TouchableOpacity } from 'react-native-gesture-handler';
 import { GiftedChat } from 'react-native-gifted-chat';
 
 export default class Chat extends React.Component {
@@ -14,8 +14,11 @@ export default class Chat extends React.Component {
   }
 
   componentDidMount() {
-    const name = this.props.route.params.name;
 
+    // assigns a variable name to the prop name that is being called from the Start screen
+    // this variable is then rendered in the static message and system message
+    let name = this.props.route.params.name;
+    // sets the state with a static message and system message
     this.setState({
       messages: [
         {
@@ -60,7 +63,7 @@ export default class Chat extends React.Component {
       <View 
         style={{flex: 1, backgroundColor: chatBg}} 
       >
-        {/* renders chat interface */}
+        {/* renders chat interface with default message and system message */}
         <GiftedChat
           messages={this.state.messages}
           onSend={messages => this.onSend(messages)}
@@ -68,14 +71,15 @@ export default class Chat extends React.Component {
             _id: 1,
           }}
           />
+          {/* fixes UI bug for Android users so the keyboard does not cover the message input field */}
           { Platform.OS === 'android' ? <KeyboardAvoidingView behavior='height' /> : null } 
 
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={styles.button}
           // navigates user back to Start screen
           onPress={() => this.props.navigation.navigate('Start')} >
           <Text style={styles.buttonText}>Back to Start</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
       </View>
     );
   }
@@ -86,15 +90,15 @@ const styles = StyleSheet.create ({
     color: 'white',
     fontSize: 30,
   },
-  button: {
-    borderWidth: 1,
-    height: 40,
-    margin: 40,
-    padding: 10,
-    borderColor: 'white',
-  },
-  buttonText: {
-    color: 'white',
-  }
+  // button: {
+  //   borderWidth: 1,
+  //   height: 40,
+  //   margin: 40,
+  //   padding: 10,
+  //   borderColor: 'white',
+  // },
+  // buttonText: {
+  //   color: 'white',
+  // }
 })
 
