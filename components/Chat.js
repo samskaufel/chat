@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Platform, KeyboardAvoidingView } from 'react-native';
+import { View, StyleSheet, Platform, KeyboardAvoidingView } from 'react-native';
 // import { TouchableOpacity } from 'react-native-gesture-handler';
 import { GiftedChat } from 'react-native-gifted-chat';
 
@@ -17,8 +17,7 @@ export default class Chat extends React.Component {
 
     // assigns a variable name to the prop name that is being called from the Start screen
     // this variable is then rendered in the static message and system message
-    let name = this.props.route.params.name;
-    // sets the state with a static message and system message
+    const { route: { params: { name } } } = this.props;    // sets the state with a static message and system message
     this.setState({
       messages: [
         {
