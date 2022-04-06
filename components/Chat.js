@@ -1,8 +1,54 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Platform, KeyboardAvoidingView } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { GiftedChat } from 'react-native-gifted-chat';
 
 export default class Chat extends React.Component {
+
+  constructor() {
+    super();
+    // state set with static message
+    this.state = {
+      messages: [
+        {
+          _id: 1,
+          text: 'Hello developer',
+          createdAt: new Date(),
+          user: {
+            _id: 2,
+            name: 'React Native',
+            avatar: 'https://placeimg.com/140/140/any',
+          },
+        },
+      ],
+    };
+  }
+
+  componentDidMount() {
+    this.setState({
+      messages: [
+        {
+          _id: 1,
+          text: 'Hello developer',
+          createdAt: new Date(),
+          user: {
+            _id: 2,
+            name: 'React Native',
+            avatar: 'https://placeimg.com/140/140/any',
+          },
+        },
+      ],
+    })
+  }
+
+  // function called when user sends a message
+  // GiftedChat's append() function appends the new message to the 'messages' object
+  // this allows the message that the user sends to be displayed in the chat
+  onSend(messages = []) {
+    this.setState(previousState => ({
+      messages: GiftedChat.append(previousState.messages, messages),
+    }))
+  }
 
   render() {
     // assigns a variable name to the prop name that is being called from the Start screen
@@ -14,8 +60,17 @@ export default class Chat extends React.Component {
     
     return (
       // the selected background color is rendered in the chat screen
-      <View style={{flex:1, justifyContent: 'center', alignItems: 'center', backgroundColor: chatBg}}>
-        <Text style={styles.text}>Hello!</Text>
+      <View 
+        style={{flex: 1, backgroundColor: chatBg}} 
+        { Platform.OS === 'android' ? <KeyboardAvoidingView behavior='height' /> : null }>
+        {/* renders chat interface */}
+        <GiftedChat
+          messages={this.state.messages}
+          onSend={messages => this.onSend(messages)}
+          user={{
+            _id: 1,
+          }}
+          />
         <TouchableOpacity
           style={styles.button}
           // navigates user back to Start screen
