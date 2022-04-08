@@ -1,5 +1,6 @@
 import React from "react";
-import { View, StyleSheet, Platform, KeyboardAvoidingView, AsyncStorage } from "react-native";
+import { View, StyleSheet, Platform, KeyboardAvoidingView } from "react-native";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { GiftedChat, Bubble, InputToolbar } from "react-native-gifted-chat";
 import NetInfo from '@react-native-community/netinfo';
 import "firebase/firestore";
@@ -28,6 +29,7 @@ export default class Chat extends React.Component {
         name: "",
         avatar: "",
       },
+      isConnected: false,
     };
     // initializes firebase
     if (!firebase.apps.length) {
@@ -37,6 +39,8 @@ export default class Chat extends React.Component {
     this.referenceChatMessages = firebase.firestore().collection("messages");
     this.refUserMsgs = null;
   }
+
+  // gets messages from asyncStorage
   // async function that retrieves chat messages and converts the saved string back into an object
   async getMessages() {
     let messages = '';
@@ -50,7 +54,7 @@ export default class Chat extends React.Component {
     }
   };
 
-  // saves messages
+  // saves messages on asyncStorage
   async saveMessages() {
     try {
       await AsyncStorage.setItem('messages', JSON.stringify(this.state.messages));
@@ -59,6 +63,7 @@ export default class Chat extends React.Component {
     }
   }
 
+  // deletes messages from asyncStorage
   async deleteMessages() {
     try {
       await AsyncStorage.removeItem('messages');
@@ -179,13 +184,6 @@ export default class Chat extends React.Component {
         wrapperStyle={{
           right: {
             backgroundColor: 'blue',
-            // display: 'flex',
-            alignItems: end,
-          },
-          left: {
-            backgroundColor: 'gray',
-            // display: 'flex',
-            alignItems: start,
           }
         }}
       />
@@ -218,6 +216,7 @@ export default class Chat extends React.Component {
           {/* renders chat interface with default message */}
           <GiftedChat
             renderBubble={this.renderBubble}
+            renderInputToolbar={this.renderInputToolbar}
             messages={this.state.messages}
             onSend={(messages) => this.onSend(messages)}
             user={{
