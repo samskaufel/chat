@@ -1,6 +1,7 @@
 import React from "react";
 import { View, StyleSheet, Platform, KeyboardAvoidingView } from "react-native";
-import { GiftedChat } from "react-native-gifted-chat";
+import { GiftedChat, Bubble } from "react-native-gifted-chat";
+import "firebase/firestore";
 const firebase = require("firebase");
 require("firebase/firestore");
 
@@ -33,16 +34,17 @@ export default class Chat extends React.Component {
     }
     // references specific 'messages' Firestore collection within database
     this.referenceChatMessages = firebase.firestore().collection("messages");
+    this.refUserMsgs = null;
   }
 
   componentDidMount() {
     // assigns a variable name to the prop name that is being called from the Start screen
-    // this variable is then rendered in the static message and system message
+    // sets the user's name state
     const {
       route: {
         params: { name },
       },
-    } = this.props; // sets the state with a static message and system message
+    } = this.props; 
     // firebase.auth() calls the Firebase Auth service for the app
     // onAuthStateChanged() is an observer that's called when the user's sign-in state changes and returns an unsubscribe() function
     this.authUnsubscribe = firebase.auth().onAuthStateChanged((user) => {
@@ -118,7 +120,10 @@ export default class Chat extends React.Component {
   onSend(messages = []) {
     this.setState((previousState) => ({
       messages: GiftedChat.append(previousState.messages, messages),
-    }));
+    }),
+    () => {
+      this.addMessage();
+    });
   }
 
   renderBubble(props) {
