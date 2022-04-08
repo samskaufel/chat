@@ -58,43 +58,45 @@ export default class Start extends React.Component {
                 placeholder="Your Name"
               />
             </View>
-            <Text style={styles.chooseBackgroundColorText}>
-              Choose Background Color
-            </Text>
-            <View style={styles.colorChoices}>
-              {/* TouchableOpacity makes views responsive to touches */}
-              <TouchableOpacity
-                style={styles.black}
-                accessible={true}
-                accessibilityLabel="black"
-                accessibilityHint="Lets you choose a black chat background"
-                accessibilityRole="button"
-                onPress={() => this.chooseColor(this.colors.black)} // user selects color from array
-              />
-              <TouchableOpacity
-                style={styles.darkPurple}
-                accessible={true}
-                accessibilityLabel="dark purple"
-                accessibilityHint="Lets you choose a dark purple chat background"
-                accessibilityRole="button"
-                onPress={() => this.chooseColor(this.colors.darkPurple)}
-              />
-              <TouchableOpacity
-                style={styles.grayBlue}
-                accessible={true}
-                accessibilityLabel="gray-blue"
-                accessibilityHint="Lets you choose a gray-blue chat background"
-                accessibilityRole="button"
-                onPress={() => this.chooseColor(this.colors.grayBlue)}
-              />
-              <TouchableOpacity
-                style={styles.sage}
-                accessible={true}
-                accessibilityLabel="sage"
-                accessibilityHint="Lets you choose a sage chat background"
-                accessibilityRole="button"
-                onPress={() => this.chooseColor(this.colors.sage)}
-              />
+              <View style={styles.chooseBackgroundColorBox}>
+                <Text style={styles.chooseBackgroundColorText}>
+                  Choose Background Color
+                </Text>
+                <View style={styles.colorChoices}>
+                  {/* TouchableOpacity makes views responsive to touches */}
+                  <TouchableOpacity
+                    style={styles.black}
+                    accessible={true}
+                    accessibilityLabel="black"
+                    accessibilityHint="Lets you choose a black chat background"
+                    accessibilityRole="button"
+                    onPress={() => this.chooseColor(this.colors.black)} // user selects color from array
+                  />
+                  <TouchableOpacity
+                    style={styles.darkPurple}
+                    accessible={true}
+                    accessibilityLabel="dark purple"
+                    accessibilityHint="Lets you choose a dark purple chat background"
+                    accessibilityRole="button"
+                    onPress={() => this.chooseColor(this.colors.darkPurple)}
+                  />
+                  <TouchableOpacity
+                    style={styles.grayBlue}
+                    accessible={true}
+                    accessibilityLabel="gray-blue"
+                    accessibilityHint="Lets you choose a gray-blue chat background"
+                    accessibilityRole="button"
+                    onPress={() => this.chooseColor(this.colors.grayBlue)}
+                  />
+                  <TouchableOpacity
+                    style={styles.sage}
+                    accessible={true}
+                    accessibilityLabel="sage"
+                    accessibilityHint="Lets you choose a sage chat background"
+                    accessibilityRole="button"
+                    onPress={() => this.chooseColor(this.colors.sage)}
+                  />
+              </View>
             </View>
             <TouchableOpacity
               style={styles.button}
@@ -129,6 +131,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     width: "100%",
+    flexDirection: 'column'
   },
   appTitle: {
     fontSize: 45,
@@ -136,12 +139,23 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
     height: "50%",
     paddingTop: 70,
+    fontWeight: 'bold'
   },
   whiteBox: {
+    marginBottom: 70,
+    flexGrow: 1,
+    flexShrink: 0,
+    flexDirection: "column",
+    paddingTop: 30,
+    paddingBottom: 30,
+    borderRadius: 10,
+    height: 400,
+    minHeight: 260,
+    maxHeight: 300,
     backgroundColor: "#FFFFFF",
     height: "44%",
     width: "88%",
-    justifyContent: "center",
+    justifyContent: "space-evenly",
   },
   inputBox: {
     flexDirection: 'row',
@@ -152,64 +166,80 @@ const styles = StyleSheet.create({
     color: '#757083',
     opacity: 0.5,
     margin: 20,
+    borderRadius: 10,
   },
   icon: {
-    width: 20,
+    padding: 10,
+    margin: 5,
     height: 20,
-    marginRight: 10,
+    width: 20,
+    resizeMode: 'stretch',
+    alignItems: 'center',
+    opacity: 1
   },
   yourNameText: {
     fontSize: 16,
     fontWeight: "300",
     color: "#757083",
   },
+  chooseBackgroundColorBox: {
+    flexDirection: 'column',
+    padding: 20,
+    marginRight: 'auto',
+    width: '88%',
+  },
   chooseBackgroundColorText: {
     fontSize: 16,
     fontWeight: "300",
     color: "#757083",
     opacity: 1,
-    padding: 20,
+    padding: 5,
   },
   colorChoices: {
     flexDirection: "row",
     justifyContent: "space-between",
     width: "80%",
-    padding: 20,
+    padding: 5,
   },
   black: {
     backgroundColor: "#090c08",
     borderRadius: 25,
     width: 50,
     height: 50,
+    margin: 5
   },
   darkPurple: {
     backgroundColor: "#474056",
     borderRadius: 25,
     width: 50,
     height: 50,
+    margin: 5
   },
   grayBlue: {
     backgroundColor: "#8a95a5",
     borderRadius: 25,
     width: 50,
     height: 50,
+    margin: 5
   },
   sage: {
     backgroundColor: "#b9c6ae",
     borderRadius: 25,
     width: 50,
     height: 50,
+    margin: 5
   },
   button: {
     backgroundColor: "#757083",
-    alignItems: "center",
     width: "88%",
-    padding: 20,
+    padding: 15,
     margin: 20,
+    borderRadius: 10,
   },
   buttonText: {
     fontSize: 16,
     fontWeight: "600",
     color: "#FFFFFF",
+    textAlign: 'center'
   },
 });

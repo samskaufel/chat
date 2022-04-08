@@ -153,20 +153,22 @@ export default class Chat extends React.Component {
     return (
       // the selected background color is rendered in the chat screen
       <View style={{ flex: 1, backgroundColor: chatBg }}>
-        {/* renders chat interface with default message and system message */}
-        <GiftedChat
-          renderBubble={this.renderBubble.bind(this)}
-          messages={this.state.messages}
-          onSend={(messages) => this.onSend(messages)}
-          user={{
-            _id: 1,
-            name: this.state.name,
-          }}
-        />
-        {/* fixes UI bug for Android users so the keyboard does not cover the message input field */}
-        {Platform.OS === "android" ? (
-          <KeyboardAvoidingView behavior="height" />
-        ) : null}
+        <View style={styles.giftedChat}>
+          {/* renders chat interface with default message */}
+          <GiftedChat
+            renderBubble={this.renderBubble.bind(this)}
+            messages={this.state.messages}
+            onSend={(messages) => this.onSend(messages)}
+            user={{
+              _id: 1,
+              name: this.state.name,
+            }}
+          />
+          {/* fixes UI bug for Android users so the keyboard does not cover the message input field */}
+          {Platform.OS === "android" ? (
+            <KeyboardAvoidingView behavior="height" />
+          ) : null}
+        </View>
       </View>
     );
   }
@@ -176,5 +178,10 @@ const styles = StyleSheet.create({
   text: {
     color: "white",
     fontSize: 30,
-  }
+  },
+  giftedChat: {
+    flex: 1,
+    margin: 20,
+    justifyContent: "center",
+  },
 });
