@@ -1,6 +1,5 @@
 import React from "react";
 import { View, StyleSheet, Platform, KeyboardAvoidingView } from "react-native";
-// import { TouchableOpacity } from 'react-native-gesture-handler';
 import { GiftedChat } from "react-native-gifted-chat";
 const firebase = require("firebase");
 require("firebase/firestore");
