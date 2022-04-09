@@ -9,8 +9,7 @@ import {
   StyleSheet,
   ImageBackground,
 } from "react-native";
-import { TouchableOpacity } from 'react-native-gesture-handler';
-
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 // the app's Start component that renders the start page UI
 export default class Start extends React.Component {
@@ -58,44 +57,44 @@ export default class Start extends React.Component {
                 placeholder="Your Name"
               />
             </View>
-              <View style={styles.chooseBackgroundColorBox}>
-                <Text style={styles.chooseBackgroundColorText}>
-                  Choose Background Color
-                </Text>
-                <View style={styles.colorChoices}>
-                  {/* TouchableOpacity makes views responsive to touches */}
-                  <TouchableOpacity
-                    style={styles.black}
-                    accessible={true}
-                    accessibilityLabel="black"
-                    accessibilityHint="Lets you choose a black chat background"
-                    accessibilityRole="button"
-                    onPress={() => this.chooseColor(this.colors.black)} // user selects color from array
-                  />
-                  <TouchableOpacity
-                    style={styles.darkPurple}
-                    accessible={true}
-                    accessibilityLabel="dark purple"
-                    accessibilityHint="Lets you choose a dark purple chat background"
-                    accessibilityRole="button"
-                    onPress={() => this.chooseColor(this.colors.darkPurple)}
-                  />
-                  <TouchableOpacity
-                    style={styles.grayBlue}
-                    accessible={true}
-                    accessibilityLabel="gray-blue"
-                    accessibilityHint="Lets you choose a gray-blue chat background"
-                    accessibilityRole="button"
-                    onPress={() => this.chooseColor(this.colors.grayBlue)}
-                  />
-                  <TouchableOpacity
-                    style={styles.sage}
-                    accessible={true}
-                    accessibilityLabel="sage"
-                    accessibilityHint="Lets you choose a sage chat background"
-                    accessibilityRole="button"
-                    onPress={() => this.chooseColor(this.colors.sage)}
-                  />
+            <View style={styles.chooseBackgroundColorBox}>
+              <Text style={styles.chooseBackgroundColorText}>
+                Choose Background Color
+              </Text>
+              <View style={styles.colorChoices}>
+                {/* TouchableOpacity makes views responsive to touches */}
+                <TouchableOpacity
+                  style={styles.black}
+                  accessible={true}
+                  accessibilityLabel="black"
+                  accessibilityHint="Lets you choose a black chat background"
+                  accessibilityRole="button"
+                  onPress={() => this.chooseColor(this.colors.black)} // user selects color from array
+                />
+                <TouchableOpacity
+                  style={styles.darkPurple}
+                  accessible={true}
+                  accessibilityLabel="dark purple"
+                  accessibilityHint="Lets you choose a dark purple chat background"
+                  accessibilityRole="button"
+                  onPress={() => this.chooseColor(this.colors.darkPurple)}
+                />
+                <TouchableOpacity
+                  style={styles.grayBlue}
+                  accessible={true}
+                  accessibilityLabel="gray-blue"
+                  accessibilityHint="Lets you choose a gray-blue chat background"
+                  accessibilityRole="button"
+                  onPress={() => this.chooseColor(this.colors.grayBlue)}
+                />
+                <TouchableOpacity
+                  style={styles.sage}
+                  accessible={true}
+                  accessibilityLabel="sage"
+                  accessibilityHint="Lets you choose a sage chat background"
+                  accessibilityRole="button"
+                  onPress={() => this.chooseColor(this.colors.sage)}
+                />
               </View>
             </View>
             <TouchableOpacity
@@ -112,9 +111,10 @@ export default class Start extends React.Component {
                   name: this.state.name,
                   chatBg: this.state.chatBg,
                 })
-              }>
-                <Text style={styles.buttonText}>Start Chatting</Text>
-              </TouchableOpacity>
+              }
+            >
+              <Text style={styles.buttonText}>Start Chatting</Text>
+            </TouchableOpacity>
           </View>
         </ImageBackground>
       </View>
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     width: "100%",
-    flexDirection: 'column'
+    flexDirection: "column",
   },
   appTitle: {
     fontSize: 45,
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
     height: "50%",
     paddingTop: 70,
-    fontWeight: 'bold'
+    fontWeight: "bold",
   },
   whiteBox: {
     marginBottom: 70,
@@ -158,12 +158,12 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
   },
   inputBox: {
-    flexDirection: 'row',
-    width: '88%',
-    borderColor: '#757083',
+    flexDirection: "row",
+    width: "88%",
+    borderColor: "#757083",
     borderWidth: 2,
     padding: 10,
-    color: '#757083',
+    color: "#757083",
     opacity: 0.5,
     margin: 20,
     borderRadius: 10,
@@ -173,9 +173,9 @@ const styles = StyleSheet.create({
     margin: 5,
     height: 20,
     width: 20,
-    resizeMode: 'stretch',
-    alignItems: 'center',
-    opacity: 1
+    resizeMode: "stretch",
+    alignItems: "center",
+    opacity: 1,
   },
   yourNameText: {
     fontSize: 16,
@@ -183,10 +183,10 @@ const styles = StyleSheet.create({
     color: "#757083",
   },
   chooseBackgroundColorBox: {
-    flexDirection: 'column',
+    flexDirection: "column",
     padding: 20,
-    marginRight: 'auto',
-    width: '88%',
+    marginRight: "auto",
+    width: "88%",
   },
   chooseBackgroundColorText: {
     fontSize: 16,
@@ -206,28 +206,28 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     width: 50,
     height: 50,
-    margin: 5
+    margin: 5,
   },
   darkPurple: {
     backgroundColor: "#474056",
     borderRadius: 25,
     width: 50,
     height: 50,
-    margin: 5
+    margin: 5,
   },
   grayBlue: {
     backgroundColor: "#8a95a5",
     borderRadius: 25,
     width: 50,
     height: 50,
-    margin: 5
+    margin: 5,
   },
   sage: {
     backgroundColor: "#b9c6ae",
     borderRadius: 25,
     width: 50,
     height: 50,
-    margin: 5
+    margin: 5,
   },
   button: {
     backgroundColor: "#757083",
@@ -240,6 +240,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "600",
     color: "#FFFFFF",
-    textAlign: 'center'
+    textAlign: "center",
   },
 });
