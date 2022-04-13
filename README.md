@@ -27,13 +27,25 @@ and location data.</li>
 <li>Data gets stored online and offline.</li>
 </ul>
 
-## Tech Stack
+## Development Environment
 <ul>
 <li>React Native</li>
-<li>Expo</li>
+<li>Expo / Expo Go</li>
 <li>Google Firestore Database</li>
 <li>Gifted Chat</li>
+<li>Android Studio</li>
 </ul>
+
+
+
+## Install Instructions
+<ul>
+<li>Clone this repo</li>
+<li>In your CLI, navigate to the root directory of this project</li>
+<li>run `npm install` to install all the necessary dependencies </li>
+
+</ul>
+
 
 ## How to Run
 
