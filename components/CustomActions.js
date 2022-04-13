@@ -5,7 +5,6 @@ import React from "react";
 //import necessary components from react-native
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 //import permissions and imagepicker
-import * as Permissions from "expo-permissions";
 import * as ImagePicker from "expo-image-picker";
 import * as Location from "expo-location";
 import firebase from 'firebase';
@@ -15,7 +14,7 @@ export default class CustomActions extends React.Component {
 
   imagePicker = async () => {
     // expo permission
-    const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
+    const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
     try {
       if (status === "granted") {
         // pick image
@@ -35,10 +34,7 @@ export default class CustomActions extends React.Component {
 
   // Let the user take a photo with device's camera
   takePhoto = async () => {
-    const { status } = await Permissions.askAsync(
-      Permissions.CAMERA,
-      Permissions.CAMERA_ROLL
-    );
+    const { status } = await ImagePicker.requestCameraPermissionsAsync();
     try {
       if (status === "granted") {
         const result = await ImagePicker.launchCameraAsync({
@@ -58,7 +54,7 @@ export default class CustomActions extends React.Component {
 //  get the location of the user by using GPS
   getLocation = async () => {
     try {
-      const { status } = await Permissions.askAsync(Permissions.LOCATION);
+      const { status } = await Location.requestForegroundPermissionsAsync();
       if (status === "granted") {
         const result = await Location.getCurrentPositionAsync(
           {}
@@ -144,7 +140,7 @@ export default class CustomActions extends React.Component {
       <TouchableOpacity
         accessible={true}
         accessibilityLabel="More options"
-        accessibilityHint="Let’s you choose to send an image or your geolocation."
+        accessibilityHint="Lets you choose to send an image or your geolocation."
         style={[styles.container]}
         onPress={this.onActionPress}
       >
